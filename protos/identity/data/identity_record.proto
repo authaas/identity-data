@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package data;
+package identity.data;
 
 import "identity/principal.proto";
 import "identity/profile.proto";
