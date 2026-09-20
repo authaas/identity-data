@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package identity.service;
+package identity.data;
 
 import "identity/data/record.proto";
 import "identity/principal.proto";
@@ -8,12 +8,12 @@ import "token/grant_hash.proto";
 
 // IdentityDataService serves the data operations of an identity: its record
 // and its outstanding grant. Each RPC is one operation performed indivisibly.
-service IdentityDataService {
-  // Removes the identity. Refuses an unknown principal.
-  rpc DeleteIdentity(DeleteIdentityRequest) returns (DeleteIdentityResponse);
-
+service Service {
   // The identity's record. Refuses an unknown principal.
-  rpc GetIdentity(GetIdentityRequest) returns (GetIdentityResponse);
+  rpc Get(GetRequest) returns (GetResponse);
+
+  // Removes the identity. Refuses an unknown principal.
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
 
   // The digest of the identity's outstanding grant; unset when none is
   // outstanding. Refuses an unknown principal.
@@ -24,19 +24,19 @@ service IdentityDataService {
   rpc ClearGrant(ClearGrantRequest) returns (ClearGrantResponse);
 }
 
-message GetIdentityRequest {
+message GetRequest {
   identity.Principal principal = 1;
 }
 
-message GetIdentityResponse {
+message GetResponse {
   data.Record record = 1;
 }
 
-message DeleteIdentityRequest {
+message DeleteRequest {
   identity.Principal principal = 1;
 }
 
-message DeleteIdentityResponse {}
+message DeleteResponse {}
 
 message GrantHashRequest {
   identity.Principal principal = 1;
