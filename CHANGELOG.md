@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.2.0 - 2026-09-20
+#### Features
+- add identity namespace to import - (d2cbf50) - Nathan Blair
+#### Miscellaneous Chores
+- use correct file name - (90a006b) - Nathan Blair
+
+- - -
+
 ## 0.1.0 - 2026-09-20
 #### Features
 - initial release - (cd271f4) - Nathan Blair
