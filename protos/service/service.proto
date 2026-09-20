@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package service;
 
-import "data/identity.proto";
+import "data/identity_record.proto";
 import "identity/principal.proto";
 import "token/grant_hash.proto";
 
