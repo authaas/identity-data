@@ -6,9 +6,9 @@ import "identity/principal.proto";
 import "identity/profile.proto";
 import "token/grant_hash.proto";
 
-// IdentityRecord is an identity as established, when, when it last
-// authenticated, and the digest of its outstanding grant, unset when none is.
-message IdentityRecord {
+// Record is an identity as established, when, when it last authenticated,
+// and the digest of its outstanding grant, unset when none is.
+message Record {
   identity.Principal principal = 1;
   identity.Profile profile = 2;
   int64 creation_date = 3;

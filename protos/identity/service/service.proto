@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package identity.service;
 
-import "identity/data/identity_record.proto";
+import "identity/data/record.proto";
 import "identity/principal.proto";
 import "token/grant_hash.proto";
 
@@ -29,7 +29,7 @@ message GetIdentityRequest {
 }
 
 message GetIdentityResponse {
-  data.IdentityRecord record = 1;
+  data.Record record = 1;
 }
 
 message DeleteIdentityRequest {
