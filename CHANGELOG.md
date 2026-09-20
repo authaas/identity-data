@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.3.0 - 2026-09-20
+#### Features
+- better namespace naming - (f743f2a) - Nathan Blair
+
+- - -
+
 ## 0.2.0 - 2026-09-20
 #### Features
 - add identity namespace to import - (d2cbf50) - Nathan Blair
