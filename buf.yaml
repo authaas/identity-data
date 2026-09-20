@@ -1,0 +1,15 @@
+version: v2
+
+modules:
+  - path: protos
+    name: buf.build/authaas/identity-data
+
+deps:
+  - buf.build/authaas/identity:0.5.0
+  - buf.build/authaas/token:0.2.2
+
+lint:
+  use:
+    - STANDARD
+  except:
+    - PACKAGE_VERSION_SUFFIX
