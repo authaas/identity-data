@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.4.0 - 2026-09-20
+#### Features
+- still working on better namespace naming - (57c48f3) - Nathan Blair
+
+- - -
+
 ## 0.3.0 - 2026-09-20
 #### Features
 - better namespace naming - (f743f2a) - Nathan Blair
