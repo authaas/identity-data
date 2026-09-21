@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.5.0 - 2026-09-21
+#### Features
+- add verb to requests - (b726c33) - Nathan Blair
+
+- - -
+
 ## 0.4.0 - 2026-09-20
 #### Features
 - still working on better namespace naming - (57c48f3) - Nathan Blair
