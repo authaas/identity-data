@@ -17,7 +17,7 @@ service Service {
 
   // The digest of the identity's outstanding grant; unset when none is
   // outstanding. Refuses an unknown principal.
-  rpc GrantHash(GrantHashRequest) returns (GrantHashResponse);
+  rpc GetGrantHash(GetGrantHashRequest) returns (GetGrantHashResponse);
 
   // Clears the outstanding grant while its digest still equals the one
   // presented. Refuses when it does not, and clears nothing.
@@ -38,11 +38,11 @@ message DeleteRequest {
 
 message DeleteResponse {}
 
-message GrantHashRequest {
+message GetGrantHashRequest {
   identity.Principal principal = 1;
 }
 
-message GrantHashResponse {
+message GetGrantHashResponse {
   // SHA-256 digest; unset when no grant is issued
   optional token.GrantHash grant_hash = 1;
 }
