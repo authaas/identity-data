@@ -5,8 +5,9 @@ modules:
     name: buf.build/authaas/identity-data
 
 deps:
-  - buf.build/authaas/identity:0.5.0
-  - buf.build/authaas/token:0.2.2
+  - buf.build/authaas/identity:0.6.0
+  - buf.build/authaas/realm:0.1.0
+  - buf.build/authaas/token:0.7.0
 
 lint:
   use:

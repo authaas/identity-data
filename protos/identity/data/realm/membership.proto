@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package identity.data.realm;
+
+import "identity/id.proto";
+import "identity/profile.proto";
+import "realm/id.proto";
+import "token/grant_hash.proto";
+
+// Membership is an identity's standing in one realm: the profile it goes by
+// there, when it joined, when it last received a grant, the digest of its
+// outstanding grant, and whether a credential may reference it.
+message Membership {
+  .identity.ID identity_id = 1;
+  .realm.ID realm_id = 2;
+  .identity.Profile profile = 3;
+  int64 creation_date = 4;
+  int64 last_authenticated_date = 5;
+  // Unset when no grant is outstanding.
+  .token.GrantHash grant_hash = 6;
+  bool credentialable = 7;
+}

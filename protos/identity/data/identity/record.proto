@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package identity.data.identity;
+
+import "identity/id.proto";
+
+// Record is an identity as established, and when.
+message Record {
+  .identity.ID identity_id = 1;
+  int64 creation_date = 2;
+}

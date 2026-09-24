@@ -2,54 +2,75 @@ syntax = "proto3";
 
 package identity.data;
 
-import "identity/data/record.proto";
-import "identity/principal.proto";
+import "identity/data/identity/record.proto";
+import "identity/data/realm/membership.proto";
+import "identity/id.proto";
+import "realm/id.proto";
 import "token/grant_hash.proto";
 
-// IdentityDataService serves the data operations of an identity: its record
-// and its outstanding grant. Each RPC is one operation performed indivisibly.
+// Service serves the data operations of an identity: its record, its standing
+// in a realm, and the grant that standing holds. Each RPC is one operation
+// performed indivisibly.
 service Service {
-  // The identity's record. Refuses an unknown principal.
+  // The identity in the realm.
   rpc Get(GetRequest) returns (GetResponse);
 
-  // Removes the identity. Refuses an unknown principal.
+  // Removes the identity, and with it every realm it belongs to and every
+  // credential referencing it.
   rpc Delete(DeleteRequest) returns (DeleteResponse);
 
   // The digest of the identity's outstanding grant; unset when none is
-  // outstanding. Refuses an unknown principal.
+  // outstanding.
   rpc GetGrantHash(GetGrantHashRequest) returns (GetGrantHashResponse);
 
   // Clears the outstanding grant while its digest still equals the one
   // presented. Refuses when it does not, and clears nothing.
   rpc ClearGrant(ClearGrantRequest) returns (ClearGrantResponse);
+
+  // Assume an identity: its grant becomes the digest presented and its last
+  // authenticated date advances. Refuses an unknown identity.
+  rpc Assume(AssumeRequest) returns (AssumeResponse);
 }
 
 message GetRequest {
-  identity.Principal principal = 1;
+  .realm.ID realm_id = 1;
+  .identity.ID identity_id = 2;
 }
 
 message GetResponse {
-  data.Record record = 1;
+  identity.Record identity = 1;
+  realm.Membership membership = 2;
 }
 
 message DeleteRequest {
-  identity.Principal principal = 1;
+  .identity.ID identity_id = 1;
 }
 
 message DeleteResponse {}
 
 message GetGrantHashRequest {
-  identity.Principal principal = 1;
+  .realm.ID realm_id = 1;
+  .identity.ID identity_id = 2;
 }
 
 message GetGrantHashResponse {
-  // SHA-256 digest; unset when no grant is issued
-  optional token.GrantHash grant_hash = 1;
+  // Unset when no grant is outstanding.
+  token.GrantHash grant_hash = 1;
 }
 
 message ClearGrantRequest {
-  identity.Principal principal = 1;
-  token.GrantHash grant_hash = 2;
+  .realm.ID realm_id = 1;
+  .identity.ID identity_id = 2;
+  token.GrantHash grant_hash = 3;
 }
 
 message ClearGrantResponse {}
+
+message AssumeRequest {
+  .realm.ID realm_id = 1;
+  .identity.ID identity_id = 2;
+  token.GrantHash grant_hash = 3;
+  int64 last_authenticated_date = 4;
+}
+
+message AssumeResponse {}
