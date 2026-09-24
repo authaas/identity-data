@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.6.0 - 2026-09-24
+#### Features
+- include realm - (983269c) - Nathan Blair
+
+- - -
+
 ## 0.5.0 - 2026-09-21
 #### Features
 - add verb to requests - (b726c33) - Nathan Blair
